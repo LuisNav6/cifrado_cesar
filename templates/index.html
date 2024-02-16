@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado César</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cifrado y Descifrado César</h1>
+    <form action="/resultado" method="post">
+        <label for="mensaje">Mensaje:</label><br>
+        <input type="text" id="mensaje" name="mensaje"><br>
+        <label for="clave">Clave:</label><br>
+        <input type="number" id="clave" name="clave" min="1" max="25" value="3"><br>
+        <label for="modulo">Módulo:</label><br>
+        <input type="number" id="modulo" name="modulo" min="1" max="25" value="26"><br>
+        <label for="accion">Acción:</label><br>
+        <select id="accion" name="accion">
+            <option value="cifrar">Cifrar</option>
+            <option value="descifrar">Descifrar</option>
+        </select><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
