@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from cifradoCesar import cifrar_cesar, descifrar_cesar
 
 app = Flask(__name__)
@@ -14,12 +14,14 @@ def resultado():
     modulo = int(request.form['modulo'])
     accion = request.form['accion']
     
+    mensaje_procesado = ""
+    
     if accion == "cifrar":
         mensaje_procesado = cifrar_cesar(mensaje, clave, modulo)
     elif accion == "descifrar":
         mensaje_procesado = descifrar_cesar(mensaje, clave, modulo)
     
-    return render_template('resultado.html', mensaje_procesado=mensaje_procesado)
+    return jsonify({'mensaje_procesado': mensaje_procesado})
 
 if __name__ == '__main__':
     app.run(debug=True)
