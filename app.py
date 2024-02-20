@@ -5,6 +5,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    #1
+    """
     if request.method == 'POST':
         mensaje = request.form['mensaje']
         clave = int(request.form['clave'])

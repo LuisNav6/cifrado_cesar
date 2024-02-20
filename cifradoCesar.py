@@ -2,6 +2,9 @@ alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéí
 modulo = len(alfabeto)
 
 def cifrar_cesar(mensaje, clave):
+    """
+    #2
+    """
     resultado = ""
     for char in mensaje:
         if char in alfabeto:
@@ -13,6 +16,9 @@ def cifrar_cesar(mensaje, clave):
     return resultado
 
 def descifrar_cesar(mensaje_cifrado, clave):
+    """
+    #3
+    """
     resultado = ""
     for char in mensaje_cifrado:
         if char in alfabeto:
