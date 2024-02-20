@@ -3,25 +3,21 @@ from cifradoCesar import cifrar_cesar, descifrar_cesar
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+        mensaje = request.form['mensaje']
+        clave = int(request.form['clave'])
+        accion = request.form['accion']
 
-@app.route('/resultado', methods=['POST'])
-def resultado():
-    mensaje = request.form['mensaje']
-    clave = int(request.form['clave'])
-    modulo = int(request.form['modulo'])
-    accion = request.form['accion']
-    
-    mensaje_procesado = ""
-    
-    if accion == "cifrar":
-        mensaje_procesado = cifrar_cesar(mensaje, clave, modulo)
-    elif accion == "descifrar":
-        mensaje_procesado = descifrar_cesar(mensaje, clave, modulo)
-    
-    return jsonify({'mensaje_procesado': mensaje_procesado})
+        if accion == "cifrar":
+            mensaje_procesado = cifrar_cesar(mensaje, clave)
+        elif accion == "descifrar":
+            mensaje_procesado = descifrar_cesar(mensaje, clave)
+
+        return jsonify({"mensaje_procesado": mensaje_procesado})
+
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

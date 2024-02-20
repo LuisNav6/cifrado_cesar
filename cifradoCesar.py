@@ -1,38 +1,24 @@
-def cifrar_cesar(mensaje, clave, modulo):
+alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéíóú"
+modulo = len(alfabeto)
+
+def cifrar_cesar(mensaje, clave):
     resultado = ""
-
     for char in mensaje:
-        if char.isalpha():
-            es_mayuscula = char.isupper()
-            char = char.lower()
-
-            cifrado = chr((ord(char) - ord('a') + clave) % modulo + ord('a'))
-
-            if es_mayuscula:
-                cifrado = cifrado.upper()
-
-            resultado += cifrado
+        if char in alfabeto:
+            indice = alfabeto.index(char)
+            indice_cifrado = (indice + clave) % modulo
+            resultado += alfabeto[indice_cifrado]
         else:
             resultado += char
-
     return resultado
 
-
-def descifrar_cesar(mensaje_cifrado, clave, modulo):
+def descifrar_cesar(mensaje_cifrado, clave):
     resultado = ""
-
     for char in mensaje_cifrado:
-        if char.isalpha():
-            es_mayuscula = char.isupper()
-            char = char.lower()
-
-            descifrado = chr((ord(char) - ord('a') - clave) % modulo + ord('a'))
-
-            if es_mayuscula:
-                descifrado = descifrado.upper()
-
-            resultado += descifrado
+        if char in alfabeto:
+            indice = alfabeto.index(char)
+            indice_descifrado = (indice - clave) % modulo
+            resultado += alfabeto[indice_descifrado]
         else:
             resultado += char
-
     return resultado
